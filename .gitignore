@@ -1,0 +1,15 @@
+# MacOS
+/**/.DS_Store
+
+# Development
+/.idea
+
+# Dependencies
+/node_modules
+/yarn-error.log
+
+# Production
+/build
+
+# Environment
+.env*.local

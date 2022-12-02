@@ -1,0 +1,13 @@
+{
+  "name": "learn-React",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  },
+  "author": {
+    "name": "Ramazan Aktayev",
+    "email": "ramazanaktaev7@gmail.com"
+  },
+  "license": "GPL-3.0"
+}
