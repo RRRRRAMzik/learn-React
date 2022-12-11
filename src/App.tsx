@@ -9,6 +9,7 @@ export default function App() {
     const [A, setA] = useState(0);
     const [B, setB] = useState(0);
     const [answers, setAnswers] = useState(new Set<number>());
+    const [message, setMessage] = useState('');
 
     function generate() {
         const a = randomInt(1, 10);
@@ -19,7 +20,7 @@ export default function App() {
             if (tempAnswers.size === correctAnswerPosition) {
                 tempAnswers.add(a * b);
             } else {
-                tempAnswers.add(randomInt(1, 81))
+                tempAnswers.add(randomInt(1, 81));
             }
         }
         setA(a);
@@ -30,7 +31,12 @@ export default function App() {
     useEffect(generate, []);
 
     function selectAnswer(answer: number) {
-
+        if (answer == A * B) {
+            setMessage('');
+            generate();
+        } else {
+            setMessage('Wrong answer, try again!');
+        }
     }
 
     return (
@@ -39,6 +45,7 @@ export default function App() {
                 {A} * {B} =
                 {Array.from(answers).map((answer) => <button onClick={() => selectAnswer(answer)}>{answer}</button>)}
             </p>
+            <p>{message}</p>
             <button onClick={generate}>
                 Новый пример
             </button>
