@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import randomInt from './utils/randomInt';
 
 
@@ -13,15 +13,22 @@ export default function App() {
     function generate() {
         const a = randomInt(1, 10);
         const b = randomInt(1, 10);
-        const tempAnswers = new Set<number>([a * b]);
+        const tempAnswers = new Set<number>();
+        const correctAnswerPosition = randomInt(0, NUMBER_ANSWERS - 1);
         while (tempAnswers.size < NUMBER_ANSWERS) {
-            tempAnswers.add(randomInt(1, 81));
+            if (tempAnswers.size === correctAnswerPosition) {
+                tempAnswers.add(a * b);
+            } else {
+                tempAnswers.add(randomInt(1, 81))
+            }
         }
         setA(a);
         setB(b);
         setAnswers(tempAnswers);
     }
-    useEffect(generate,[]);
+
+    useEffect(generate, []);
+
     function selectAnswer(answer: number) {
 
     }
